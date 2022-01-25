@@ -117,8 +117,12 @@ def download():
     # chama é atualisa a barra de progresso
     yt.register_on_progress_callback(on_progress)
 
-    yt.streams.filter(file_extension='mp4')
-    yt.streams.get_by_itag(22).download()
+    reso = input("qual a resolução que vc quer?")
+
+    print(yt.streams.filter(file_extension='mp4',
+          type="video", mime_type="video/mp4", res=reso))
+    qual = int(input("\nqual a itag do video que vc quer ?"))
+    yt.streams.get_by_itag(qual).download()
     # faz o download do video
     # yt.streams.filter(only_audio=False).first().download()
 
